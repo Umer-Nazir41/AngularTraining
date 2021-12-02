@@ -1,0 +1,21 @@
+ <app-button (click)="getDataFromApi()" text='{{"Get_Posts" | translate}}' color="#0D6EFD" *ngIf="isPressed">GET DATA
+ </app-button>
+
+ <ul *ngFor="let post of data">
+   <div class="container">
+     <div class="card bg-warning">
+       <!-- put item.userId & item.id below this -->
+       <div class="card-header"><b>{{"ID" | translate}} </b> {{post.id}}
+         <app-button text='{{"Get_Post" | translate}}' color="#0D6EFD" (click)="getSinglePostData(post.id)"
+           *ngIf="!isPressed">
+         </app-button>
+       </div>
+       <div class="card-body">
+         <!-- put item.title below this -->
+         <h5 class="card-title"><b>{{"Title" | translate}} </b> {{post.title}}</h5>
+         <!-- put item.body below this -->
+         <p class="card-text"><b>{{"Body" | translate}} </b> {{post.body}}</p>
+       </div>
+     </div>
+   </div>
+ </ul>

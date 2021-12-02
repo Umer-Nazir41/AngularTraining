@@ -1,0 +1,67 @@
+<!-- <div class="login-wrapper">
+  <div class="card">
+    <div class="card-body">
+      <form class="form-signin" (ngSubmit)="onSubmit(signInForm)" #signInForm="ngForm">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <div class="form-floating">
+          <label for="floatingInput" class="sr-only">Email address</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="name@example.com" required autofocus
+            ngModel>
+        </div>
+        <div class="form-floating">
+          <label for="floatingPassword">Password</label>
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required ngModel>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="login-wrapper">
+  <div class="card">
+    <div class="card-body">
+      <form class="form-signin" (ngSubmit)="onSubmit(signInForm)" #signInForm="ngForm">
+        <h1 class="h3 mb-3 font-weight-normal">{{"First_Name" | translate}}</h1>
+
+        <label for="inputlogin" class="sr-only">{{"Login" | translate}}</label>
+        <input type="text" id="inputLogin" class="form-control" name="login" placeholder="Login" ngModel required
+          autofocus #login="ngModel" email>
+
+        <div *ngIf="login!.invalid && (login!.dirty || login!.touched)" class="alert alert-danger">
+          <small *ngIf="login!.errors!.required">
+            {{"Email_Required" | translate}}
+          </small>
+          <small *ngIf="login.errors?.email" class="text-danger">{{"Valid_Email" | translate}}</small>
+        </div>
+
+        <label for="inputPassword" class="sr-only">{{"Password" | translate}}</label>
+        <input type="password" id="password" class="form-control" name="password" placeholder="Password"
+          autocomplete="on" ngModel required minlength="7" #password="ngModel">
+
+        <div *ngIf="password!.invalid && (password!.dirty || password!.touched)" class="alert alert-danger">
+          <small *ngIf="password!.errors!.required">
+            {{"Password_Required" | translate}}
+          </small>
+          <small *ngIf="password!.errors!.minlength">
+            {{"Pass_Valid" | translate}}
+          </small>
+        </div>
+
+        <div class="buton">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">{{"Sign_In" | translate}}</button>
+          <button class="btn btn-lg btn-primary btn-block" routerLink="/signup">{{"Sign_Up" | translate}}</button>
+        </div>
+
+
+        <div class="alert alert-danger" role="alert" *ngIf="isFormValid">
+          {{"Fill_All_Field" | translate}}
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="areCredentialsInvalid">
+          {{"Invalid" | translate}}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

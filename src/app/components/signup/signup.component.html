@@ -1,0 +1,70 @@
+<div class="login-wrapper">
+  <div class="card">
+    <div class="card-body">
+      <form class="form-signin" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <h1 class="h3 mb-3 font-weight-normal">{{"Sign_Up" | translate}}</h1>
+
+        <label for="inputlogin" class="sr-only mb-1">{{"First_Name" | translate}}</label>
+        <input type="text" id="firstName" formControlName="firstName" class="form-control" name="firstName"
+          placeholder="First Name" ngModel required autofocus>
+
+        <div *ngIf="firstName!.invalid && (firstName!.dirty || firstName!.touched)" class="alert alert-danger">
+          <small *ngIf="firstName!.errors!.required">
+            {{"First_Name_Required" | translate}}
+          </small>
+        </div>
+
+        <label for="inputlogin" class="sr-only mb-1">{{"Last_Name" | translate }}</label>
+        <input type="text" id="lastName" formControlName="lastName" class="form-control" name="lastName"
+          placeholder="Last Name" ngModel required autofocus>
+
+        <div *ngIf="lastName!.invalid && (lastName!.dirty || lastName!.touched)" class="alert alert-danger">
+          <small *ngIf="lastName!.errors!.required">
+            {{"Last_Name_Required" | translate}}
+          </small>
+        </div>
+
+        <label for="inputlogin" class="sr-only mb-1">{{"Email" | translate }} </label>
+        <input type="text" id="inputLogin" formControlName="email" class="form-control" name="login" placeholder="Login"
+          [value]="'' | uppercase" ngModel required autofocus email>
+
+        <div *ngIf="email!.invalid && (email!.dirty || email!.touched)" class="alert alert-danger">
+          <small *ngIf="email!.errors!.required">
+            {{"Email_Required" | translate}}
+          </small>
+          <small *ngIf="email!.errors!.email" class="text-danger">{{"Valid_Email" | translate}}</small>
+        </div>
+
+        <label for="inputPassword" class="sr-only mb-1">{{"Password" | translate}}</label>
+        <input type="password" id="password" formControlName="password" class="form-control" name="password"
+          placeholder="Password" autocomplete="on" ngModel required>
+
+        <div *ngIf="password!.invalid && (password!.dirty || password!.touched)" class="alert alert-danger">
+          <small *ngIf="password!.errors!.required">
+            {{"Password_Required" | translate}}
+          </small>
+          <small *ngIf="password!.errors!.minlength">
+            {{"Pass_Valid" | translate}}
+          </small>
+        </div>
+
+        <div class="buton">
+          <button class="btn btn-lg btn-primary btn-block" type=" submit"
+            [disabled]="!profileForm.valid">{{"Sign_Up" | translate}}</button>
+          <button class="btn btn-lg btn-primary btn-block" routerLink="/signin">{{"Sign_In" | translate}}</button>
+        </div>
+
+        <!-- <p>Form Status: {{ profileForm.status }}</p> -->
+
+
+        <!-- <div class="alert alert-danger" role="alert" *ngIf="isFormValid">
+          Please fill all fields.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="areCredentialsInvalid">
+          Invalid user or password.
+        </div> -->
+
+      </form>
+    </div>
+  </div>
+</div>

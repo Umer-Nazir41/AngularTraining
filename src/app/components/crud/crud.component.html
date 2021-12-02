@@ -1,0 +1,89 @@
+<!-- PAGE TITLE AND NEW BUTTON TO ADD -->
+<div class="container-fluid">
+  <h1 style="color: rgb(36, 40, 43)">{{"Crud_header" | translate}}</h1>
+  <div class="d-flex">
+    <button type="button" (click)="onClickAddUser" data-bs-toggle="modal" data-bs-target="#exampleModal"
+      class="btn btn-success">{{"Add_Person" | translate}}</button>
+  </div>
+</div>
+
+<!-- TABLE TO DISPLAY DATA -->
+<!-- <div class="mt-3 table-responsive-md"> -->
+<div class="col-md-12">
+  <!-- <table class="table mt-3 table-hover"> -->
+  <table class="table table-bordered table-hover mt-3">
+    <thead>
+      <tr>
+        <!-- <th scope="col">ID</th> -->
+        <th scope="col" class="text-center">{{"First_Name" | translate}}</th>
+        <th scope="col" class="text-center">{{"Last_Name" | translate}}</th>
+        <th scope="col" class="text-center">{{"Email" | translate}}</th>
+        <th scope="col" class="text-center">{{"Action" | translate}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <!-- <td>{{user.id}}</td> -->
+        <td class="text-center">{{user.firstName | uppercase }}</td>
+        <td class="text-center">{{user.lastName | uppercase }}</td>
+        <td class="text-center">{{user.email | uppercase }}</td>
+        <td class="text-center">
+          <app-button text='{{"Edit" | translate}}' color="#0DCAF0" type="button" data-bs-toggle="modal"
+            data-bs-target="#exampleModal" (btnClick)="onEdit(user)"></app-button>
+          <app-button text='{{"Delete" | translate}}' color="#DC3545" class="mx-3" (click)="deleteUsers(user)">
+          </app-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- POP-UP Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{"Add_Person" | translate}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">{{"First_Name" | translate}}</label>
+            <input type="text" class="form-control" id="firstName" aria-describedby="firstName"
+              formControlName="firstName">
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">{{"Last_Name" | translate}}</label>
+            <input type="lastName" class="form-control" id="lastName" aria-describedby="lastName"
+              formControlName="lastName">
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">{{"Email" | translate}}</label>
+            <input type="email" class="form-control" id="email" aria-describedby="email" formControlName="email"
+              required autofocus email ngModel>
+
+            <div *ngIf="email!.invalid && (email!.dirty || email!.touched)" class="alert alert-danger">
+              <small *ngIf="email!.errors!.required">
+                {{"Email_Required"| translate}}
+              </small>
+              <small *ngIf="email!.errors!.email" class="text-danger">{{"Valid_Email" | translate}}</small>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <app-button text='{{"Close" | translate}}' color="#6C757D" type="button" id="cancel" data-bs-dismiss="modal">
+        </app-button>
+        <button type="button" class="btn btn-primary" *ngIf="!updating" (click)="postUserDetails()"
+          [disabled]="!formValue.valid">{{"Add" | translate}}</button>
+        <app-button text='{{"Update" | translate}}' color="#0D6EFD" type="button" *ngIf="updating"
+          (click)="updateUserDetails()">
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

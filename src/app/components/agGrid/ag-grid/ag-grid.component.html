@@ -1,0 +1,9 @@
+<!-- <ag-grid-angular #agGrid style="height: 88%; width: 98%; font-size: 18px; row-height:50px; display: block;"
+  class="ag-theme-balham  m-3" [rowData]="rowData |async" [columnDefs]="columnDefs" rowSelection="multiple">
+</ag-grid-angular> -->
+
+
+<ag-grid-angular #agGrid style="height: 88%; width: 98%; font-size: 18px; row-height:50px; display: block;"
+  class="ag-theme-balham  m-3" [rowData]="rowData |async" [columnDefs]="columnDefs" rowSelection="multiple"
+  [gridOptions]="gridOptions" (gridReady)="onGridReady()">
+</ag-grid-angular>

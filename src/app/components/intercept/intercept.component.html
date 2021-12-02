@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-center">
+  <div class="login-wrapper">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="buton">
+          <!-- Button To access Secret Page  -->
+          <app-button text='{{"Access" | translate}}' color="#0D6EFD" class="btn btn-lg btn-primary btn-block m-3"
+            (click)="AccessSecretPage()"></app-button>
+        </div>
+        <div class="text-center">
+          <div>
+            {{dataLog}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

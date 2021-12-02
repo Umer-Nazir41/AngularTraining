@@ -1,0 +1,41 @@
+<!-- <main role="main" class="container">
+  <div class="jumbotron">
+    <h1>Home</h1>
+    <p appHighlight class="lead">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam temporibus laborum facere dolor ipsum. Sint est
+      laudantium recusandae labore explicabo, doloribus dolor, corporis, ab laboriosam nam iste quo beatae. Doloremque.
+    </p>
+    <p [appHighlight]="color" class="lead">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam temporibus laborum facere dolor ipsum. Sint est
+      laudantium recusandae labore explicabo, doloribus dolor, corporis, ab laboriosam nam iste quo beatae. Doloremque.
+    </p>
+  </div>
+</main> -->
+<!--
+<h1>My First Attribute Directive</h1>
+
+<h2>Pick a highlight color</h2>
+<div>
+  <input type="radio" name="colors" (click)="color='lightgreen'">Green
+  <input type="radio" name="colors" (click)="color='yellow'">Yellow
+  <input type="radio" name="colors" (click)="color='cyan'">Cyan
+</div>
+<p [appHighlight]="color">Highlight me!</p> -->
+
+
+<main role="main" class="container card justify-content-center">
+  <div class="jumbotron">
+    <span class="card justify-content-center">
+      <h1>{{"Attribute_directive_Header" | translate}}</h1>
+    </span>
+
+
+    <h2>{{"Color_Heading" | translate}}</h2>
+    <div>
+      <input type="radio" name="colors" (click)="color='lightgreen'">{{"Green" | translate}}
+      <input type="radio" name="colors" (click)="color='yellow'">{{"Yellow" | translate}}
+      <input type="radio" name="colors" (click)="color='cyan'">{{"Cyan" | translate}}
+    </div>
+    <p [appHighlight]="color">{{"Highlight_Title" | translate}}</p>
+  </div>
+</main>

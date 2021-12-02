@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "reactnativefirebase-1e30f": {
+      "hosting": {
+        "LoginTask": [
+          "reactnativefirebase-1e30f"
+        ]
+      }
+    }
+  }
+}
